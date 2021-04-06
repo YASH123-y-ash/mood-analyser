@@ -7,11 +7,31 @@ import org.junit.jupiter.api.Test;
 public class MoodAnalyserTest {
 
     @Test
-    //UC3-given null mood should return HAPPY
-    public void givenNullMood_ShouldReturnHappy()
+    public void givenSadMessageShouldReturnsSad()
     {
-        MoodAnalyser moodAnalyser = new MoodAnalyser(null);
-        String mood = moodAnalyser.moodAnalysis();
-        Assertions.assertEquals("HAPPY",mood);
+        MoodAnalyser moodAnalyzer = new MoodAnalyser();
+        String mood = moodAnalyzer.analyseMood("I am in sad Mood");
+        System.out.println(mood);
+        Assertions.assertEquals("SAD",mood);
     }
+
+    @Test
+    public void givenNullMoodShouldThrowMoodAnalysisException()
+    {
+        MoodAnalyser moodAnalyzer = new MoodAnalyser();
+        String mood = moodAnalyzer.analyseMood(null);
+        System.out.println(mood);
+        Assertions.assertEquals("HAPPY",mood);
+
+    }
+    @Test
+    public void givenEmptyMoodShouldThrowMoodAnalysisException()
+    {
+        MoodAnalyser moodAnalyzer = new MoodAnalyser();
+        String mood = moodAnalyzer.analyseMood("");
+        System.out.println(mood);
+        Assertions.assertEquals("HAPPY",mood);
+
+    }
+
 }

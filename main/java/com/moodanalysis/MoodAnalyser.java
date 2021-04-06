@@ -2,32 +2,35 @@ package com.moodanalysis;
 
 public class MoodAnalyser {
 
-    String message;
+    private String message;
 
-    //taking default constructor
-    public MoodAnalyser()
-    {
-
-    }
-    //taking parameterized constructor
-    public MoodAnalyser(String message)
-    {
-        super();
+    public void MoodAnalyzer(String message) {
         this.message = message;
+
     }
 
-    //UC3-handle exception if user gives invalid mood null
-    public String moodAnalysis()
-    {
+    public MoodAnalyser() {
+
+    }
+
+
+    // Handeling NullPointerException
+    public String analyseMood(String message)  {
         try {
-            if (this.message.contains("sad"))
+            this.message = message;
+            if (message == null || message.isEmpty())
+            {
+                throw new MoodAnalyserException();
+            }
+            if(message.contains("sad"))
                 return "SAD";
             else
                 return "HAPPY";
-        }
-        catch (NullPointerException e)
-        {
+
+        } catch (MoodAnalyserException e) {
             return "HAPPY";
+
         }
+
     }
 }
