@@ -9,10 +9,21 @@ public class MoodAnalyserTest {
 
 
     @Test
-    public void givenNullMood_ShouldReturnHappy()
+    //UC1-to validate sad mood should return sad
+    public void givenSadMood_ShouldReturnSad()
     {
-        MoodAnalyser moodAnalyser = new MoodAnalyser(null);
-        String mood = moodAnalyser.moodAnalysis();
+        MoodAnalyser moodAnalyser = new MoodAnalyser();
+        String mood = moodAnalyser.moodAnalysis("i am in sad mood");
+        Assertions.assertEquals("SAD",mood);
+    }
+
+    @Test
+    //UC1-to validate i am in any mood should return happy
+    public void givenIAmAnyMood_ShouldReturnHappy()
+    {
+        MoodAnalyser moodAnalyser = new MoodAnalyser();
+        String mood = moodAnalyser.moodAnalysis("i am in any mood");
         Assertions.assertEquals("HAPPY",mood);
     }
+
 }
