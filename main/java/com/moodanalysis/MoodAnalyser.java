@@ -16,22 +16,18 @@ public class MoodAnalyser {
         this.message = message;
     }
 
-
-
-    //UC1-taking parameters in method
-    public String moodAnalysis(String message) {
-
-        if (message.contains("sad"))
-            return "SAD";
-        else
+    //UC3-handle exception if user gives invalid mood null
+    public String moodAnalysis()
+    {
+        try {
+            if (this.message.contains("sad"))
+                return "SAD";
+            else
+                return "HAPPY";
+        }
+        catch (NullPointerException e)
+        {
             return "HAPPY";
         }
-    //UC2-defining a method without parameter
-    public String mooAnalysis()
-    {
-        if(this.message.contains("sad"))
-            return "SAD";
-        else
-            return "HAPPY";
     }
 }
